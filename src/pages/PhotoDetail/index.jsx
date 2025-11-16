@@ -4,6 +4,7 @@ import { usePhotoDetail } from "../../hooks/usePhotoDetail";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import ErrorMessage from "../../components/ErrorMessage";
 import Header from "../../components/Header";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 /**
  * Photo Detail page component
@@ -18,7 +19,6 @@ const PhotoDetailPage = () => {
   const handleBack = useCallback(() => {
     navigate("/photos");
   }, [navigate]);
-
 
   if (loading) {
     return (
@@ -63,10 +63,11 @@ const PhotoDetailPage = () => {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           {/* Photo Image */}
           <div className="relative">
-            <img
+            <LazyLoadImage
               src={photo.downloadUrl}
               alt={photo.title}
               className="w-full h-auto max-h-[70vh] object-contain bg-gray-100"
+              loading="lazy"
             />
           </div>
 
