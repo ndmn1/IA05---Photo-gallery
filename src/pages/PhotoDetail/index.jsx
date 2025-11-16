@@ -12,17 +12,13 @@ const PhotoDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { photo, photoImageUrl, loading, error, retry } = usePhotoDetail(id);
+  const { photo, loading, error, retry } = usePhotoDetail(id);
 
   // Handle back navigation
   const handleBack = useCallback(() => {
     navigate("/photos");
   }, [navigate]);
 
-  // Handle image error
-  const handleImageError = useCallback((e) => {
-    e.target.src = `https://via.placeholder.com/800x600?text=Image+Not+Found`;
-  }, []);
 
   if (loading) {
     return (
@@ -68,10 +64,9 @@ const PhotoDetailPage = () => {
           {/* Photo Image */}
           <div className="relative">
             <img
-              src={photoImageUrl}
+              src={photo.downloadUrl}
               alt={photo.title}
               className="w-full h-auto max-h-[70vh] object-contain bg-gray-100"
-              onError={handleImageError}
             />
           </div>
 

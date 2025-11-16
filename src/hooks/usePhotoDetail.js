@@ -43,12 +43,6 @@ export const usePhotoDetail = (photoId) => {
     fetchPhotoDetail(photoId);
   }, [fetchPhotoDetail, photoId]);
 
-  // Memoized values for better performance
-  const photoImageUrl = useMemo(() => {
-    if (!photo) return null;
-    return API.PHOTO_IMAGE(photo.id, 800, 600);
-  }, [photo]);
-
   const photoInfo = useMemo(() => {
     if (!photo) return null;
 
@@ -67,7 +61,6 @@ export const usePhotoDetail = (photoId) => {
 
   return {
     photo: photoInfo,
-    photoImageUrl,
     loading,
     error,
     retry,

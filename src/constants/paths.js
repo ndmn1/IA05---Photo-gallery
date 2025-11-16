@@ -9,10 +9,6 @@ export const PATHS = {
 export const API = {
   PHOTOS_LIST: "https://picsum.photos/v2/list",
   PHOTO_INFO: (id) => `https://picsum.photos/id/${id}/info`,
-  PHOTO_IMAGE: (id, width = 800, height = 600) =>
-    `https://picsum.photos/id/${id}/${width}/${height}`,
-  PHOTO_THUMBNAIL: (id, width = 300, height = 300) =>
-    `https://picsum.photos/id/${id}/${width}/${height}`,
 };
 
 // Pagination settings
